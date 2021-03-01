@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar  1 12:08:14 2021
+
+@author: ziya
+"""
+'''The derivative example
+# from math import *
+# def f(x):
+#     return sin(x)
+# a=1.0
+# h=0.1
+# for i in range(14):
+#     f1=(f(a+h)-f(a))/h
+#     print('%.12f'% h,'%.10f' % f1,'%.10f' % float(cos(a)-1))
+#     h=h/10.0
+'''
+'''Exercise 1.3    
+# from math import *
+# def f(x):
+#     return x*(sqrt(x+1)-sqrt(x))
+# def g(h):
+#     return h/(sqrt(h+1)+sqrt(h))
+# print(f(100000),g(100000))
+'''
+''' Exercise 1.4
+from math import *
+def f(x):
+    return 1-cos(x)
+def g(y):
+    return log(y+1)-log(y)
+def h(z):
+    return (cos(z))**2-(sin(z))**2
+def p(c):
+    return sqrt(c**2+1)-c
+def d(e):
+    return sin(e)-cos(e)
+def a(b):
+    return exp(3*b)-3*exp(2*b)+5*exp(b)-1
+pi=3.14
+print(f(0.001),g(1000),h(0.249*pi),p(1000),d(0.249*pi),a(10))      
+'''
+'''#,1 Exercise 1.5
+from math import *
+a=float(input('First variable: '))
+b=float(input('Second varble: '))
+c=float(input('Third one: '))
+delta=b**2-4*a*c
+
+x1=(-b-sqrt(delta))/2*a
+x2=c/x1
+
+print(x1,x2)
+'''
+'''# Exercies karşılaştırma
+from math import *
+def f(x):
+    return tan(x)
+def f1(x):
+    return 1/cos(x)**2
+h = 0.001
+for i in range(3):
+    x=float(i+1)
+    f1_ileri=(f(x+h)-f(x))/h
+    f1_geri=(f(x)-f(x-h))/h
+    f1_simetrik=(f(x+h)-f(x-h))/(2*h)
+    f1_tam=f1(x)
+    print('%.10f' % f1_ileri,'%.10f' % f1_geri, '%.10f' % f1_simetrik, '%.10f' % f1_tam)
+'''
+''' Adım aralığının önemi
+from math import *
+def f(x):
+    return exp(x)
+def f1(x):
+    return exp(x)
+h=0.1
+x=1.0
+
+for i in range(12):
+    f1_simetrik=(f(x+h)-f(x-h))/(2*h)
+    f1_tam=f1(x)
+    fark = f1_tam-f1_simetrik
+    print('%.12f' % h, '%.10f' % f1_simetrik,'%.10f' %f1_tam, '%.10f' % fark )
+    h=h/10.0
+'''
+'''#Bir boyutta hareket 
+from pylab import *
+from numpy import *
+def f(x,v,t):
+    return -x
+n = 200
+h = 6.28/float(n)
+t = zeros(n,float)
+v = zeros(n,float)
+x = zeros(n,float)
+v[0] = 1.0
+for i in range(1,n):
+    t[i]=h*i
+    x[i]=v[i-1]*h+x[i-1]
+    v[i]=v[i-1]+h*f(x[i-1],v[i-1],t[i-1])
+plot(t,x,'k-')
+plot(t,v,'k--')
+xlabel('t')
+ylabel('y = sin x ve y = cos x')
+show()
+'''
+    
+
+
+    
+
+
