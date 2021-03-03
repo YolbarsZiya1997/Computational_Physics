@@ -89,12 +89,12 @@ from pylab import *
 from numpy import *
 def f(x,v,t):
     return -x
-n = 200
+n = 2000
 h = 6.28/float(n)
 t = zeros(n,float)
 v = zeros(n,float)
 x = zeros(n,float)
-v[0] = 1.0
+v[0] = 5.0
 for i in range(1,n):
     t[i]=h*i
     x[i]=v[i-1]*h+x[i-1]
@@ -105,9 +105,164 @@ xlabel('t')
 ylabel('y = sin x ve y = cos x')
 show()
 '''
-    
+'''Simpson and Trapez yöntemi (integral almada)
+from numpy import *
+def f(x):
+    return exp(x)
+def trapez(a,b,n):
+    if n<1 or a>b:
+        print('hatalı veri')
+    else:
+        h=(b-a)/n
+        s=(f(a)+f(b))/2
+        for i in range(1,n):
+            x=a+i*h
+            s=s+f(x)
+        return h*s
+def simpson(a,b,n):
+    if n<1 or a>b:
+        print('hatalı veri')
+    elif n%2==1:
+        print('n çift değil')
+    else:
+        h=(b-a)/n
+        s=f(a)+f(b)
+        for i in range(1,n):
+            katsayi=2*(i%2+1)
+            x=a+i*h
+            s=s+katsayi*f(x)
+        return h*s/3.0
+a=0.0
+b=1.0
+stam=f(1.0)-1.0
+n=4
+print('N','Trapez hatası','Simpson hatası')
+for i in range(6):
+    print(n, '%.8f' % float(trapez(a, b, n)-stam), '%.8f' % float(simpson(a,b,n)-stam))
+    n=n+4
+'''
+'''Simpson ve Gauss karşılaştırması
+from numpy import *
+def simpson(a,b,n):
+    if n<1 or a>b:
+        print('hatalı veri')
+    elif n%2==1:
+        print('n çift değil')
+    else:
+        h=(b-a)/n
+        s=f(a)+f(b)
+        for i in range(1,n):
+            katsayi=2*(i%2+1)
+            x=a+i*h
+            s=s+katsayi*f(x)
+        return h*s/3.0
+def gaussq6(a,b,n):
+    if n!=6:
+        print('N SAYİSİ 6 OLMALI')
+        return
+    else:
+        x = empty(6,float)
+        w = empty(6,float)
+        x[0] = -0.932469514203152
+        x[1] = -0.661209386466265
+        x[2] = -0.238619186083197
+        x[3] = -x[2]
+        x[4] = -x[1]
+        x[5] = -x[0]
+        w[0] = 0.171324492379170
+        w[1] = 0.360761573048139
+        w[2] = 0.467913934572691
+        w[3] = w[2]
+        w[4] = w[1]
+        w[5] = w[0]
+        s = 0.0
+        for i in range(n):
+            x[i]=((b-a)*x[i]+(b+a))/2
+            s = s+w[i]*f(x[i])
+        s=0.5*(b-a)*s
+        return s
+def f(x):
+    return exp(-x)
+n=6
+a=0.0
+b=3.0
+print('Gauss = ', '%.8f' % gaussq6(a, b, n),'Simpson = ', '%.8f' % simpson(a, b, n))
+'''
+'''# Tekil integralleri hesaplamak için güzel bir yöntem(altprogram)
+from numpy import *
+from math import *
+def f(x):
+    return exp(x)
+def gaussqn(a,b,n):
+    if n%2!=0:
+        print('N sayısı çift olmalı!')
+        return
+    else:
+        eps=3.0e-14
+        x=empty(n,float)
+        w=empty(n,float)
+        m=(n+1)/2
+        xm=0.5*(b+a)
+        xl=0.5*(b-a)
+        for i in range(n):
+            z=cos(pi*(i+0.75)/(n+0.5))
+            z1=0.0
+            while(abs(z-z1))>eps:
+                r1=1.0
+                r2=0.0
+                for j in range(n):
+                    r3=r2
+                    r2=r1
+                    r1=((2*j+1)*z*r2-j*r3)/float(j+1)
+                rr=n*(z*r1-r2)/(z*z-1)
+                z1=z
+                z=z1-r1/rr
+            x[i]=xm-xl*z
+            x[n-1-i]=xm+xl*z
+            w[i]=2.0*xl/((1.0-z*z)*rr*rr)
+            w[n-1-i]=w[i]
+    s=0.0
+    for i in range(n):
+        s=s+w[i]*f(x[i])
+    return s
+n=6
+a=0.0
+b=1.0
+print('Gaussqn = ', '%.8f' % gaussqn(a, b, n))
+# This method can be used for any odd integrals using the method of changing \
+   # variables
+'''
+'''#Sarkac
+from math import *
+from numpy import *
+def f(x):
+    return exp(x)
+def trapez(a,b,n):
+    if n<1 or a>b:
+        print('hatalı veri')
+    else:
+        h=(b-a)/n
+        s=(f(a)+f(b))/2
+        for i in range(1,n):
+            x=a+i*h
+            s=s+f(x)
+        return h*s
+def f(x):
+    global genlik
+    return 1.0/sqrt(1-(sin(genlik/2)*sin(x))**2)
+a=0.0
+g=9.8
+L=1.0
+b=pi/2
+t_yaklasik=2*pi*sqrt(L/g)
+n=200
 
-
+for i in range(13):
+    genlik=5*i*pi/180
+    t_tam=4*sqrt(L/g)*trapez(a,b,n)
+    print('%.1f' % float(genlik*180/pi),'%.6f' % t_yaklasik, '%.6f' % t_tam)
+# Gaussqn yöntemini kullansak dahi percision aynıdır, alt programlardan alıp kullanabilirsiniz
+'''
     
 
 
