@@ -263,8 +263,5 @@ for i in range(13):
     print('%.1f' % float(genlik*180/pi),'%.6f' % t_yaklasik, '%.6f' % t_tam)
 # Gaussqn yöntemini kullansak dahi percision aynıdır, alt programlardan alıp kullanabilirsiniz
 '''
-'''
-So let's see how will this be applied to the github
-''' 
 
 
