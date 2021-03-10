@@ -5,7 +5,8 @@ Created on Mon Mar  1 12:08:14 2021
 
 @author: ziya
 """
-'''The derivative example
+# The derivative example
+'''
 # from math import *
 # def f(x):
 #     return sin(x)
@@ -16,7 +17,8 @@ Created on Mon Mar  1 12:08:14 2021
 #     print('%.12f'% h,'%.10f' % f1,'%.10f' % float(cos(a)-1))
 #     h=h/10.0
 '''
-'''Exercise 1.3    
+# Exercise 1.3    
+'''
 # from math import *
 # def f(x):
 #     return x*(sqrt(x+1)-sqrt(x))
@@ -24,7 +26,8 @@ Created on Mon Mar  1 12:08:14 2021
 #     return h/(sqrt(h+1)+sqrt(h))
 # print(f(100000),g(100000))
 '''
-''' Exercise 1.4
+ # Exercise 1.4
+'''
 from math import *
 def f(x):
     return 1-cos(x)
@@ -41,7 +44,8 @@ def a(b):
 pi=3.14
 print(f(0.001),g(1000),h(0.249*pi),p(1000),d(0.249*pi),a(10))      
 '''
-'''#,1 Exercise 1.5
+# Exercise 1.5
+'''
 from math import *
 a=float(input('First variable: '))
 b=float(input('Second varble: '))
@@ -53,7 +57,8 @@ x2=c/x1
 
 print(x1,x2)
 '''
-'''# Exercies karşılaştırma
+# Exercies karşılaştırma
+'''
 from math import *
 def f(x):
     return tan(x)
@@ -68,7 +73,8 @@ for i in range(3):
     f1_tam=f1(x)
     print('%.10f' % f1_ileri,'%.10f' % f1_geri, '%.10f' % f1_simetrik, '%.10f' % f1_tam)
 '''
-''' Adım aralığının önemi
+ # Adım aralığının önemi
+'''
 from math import *
 def f(x):
     return exp(x)
@@ -84,7 +90,8 @@ for i in range(12):
     print('%.12f' % h, '%.10f' % f1_simetrik,'%.10f' %f1_tam, '%.10f' % fark )
     h=h/10.0
 '''
-'''#Bir boyutta hareket 
+#Bir boyutta hareket 
+'''
 from pylab import *
 from numpy import *
 def f(x,v,t):
@@ -105,7 +112,8 @@ xlabel('t')
 ylabel('y = sin x ve y = cos x')
 show()
 '''
-'''Simpson and Trapez yöntemi (integral almada)
+# Simpson and Trapez yöntemi (integral almada)
+'''
 from numpy import *
 def f(x):
     return exp(x)
@@ -141,7 +149,8 @@ for i in range(6):
     print(n, '%.8f' % float(trapez(a, b, n)-stam), '%.8f' % float(simpson(a,b,n)-stam))
     n=n+4
 '''
-'''Simpson ve Gauss karşılaştırması
+# Simpson ve Gauss karşılaştırması
+'''
 from numpy import *
 def simpson(a,b,n):
     if n<1 or a>b:
@@ -188,7 +197,8 @@ a=0.0
 b=3.0
 print('Gauss = ', '%.8f' % gaussq6(a, b, n),'Simpson = ', '%.8f' % simpson(a, b, n))
 '''
-'''# Tekil integralleri hesaplamak için güzel bir yöntem(altprogram)
+# Tekil integralleri hesaplamak için güzel bir yöntem(altprogram)
+'''
 from numpy import *
 from math import *
 def f(x):
@@ -232,7 +242,8 @@ print('Gaussqn = ', '%.8f' % gaussqn(a, b, n))
 # This method can be used for any odd integrals using the method of changing \
    # variables
 '''
-'''#Sarkac
+#Sarkac
+'''
 from math import *
 from numpy import *
 def f(x):
