@@ -219,7 +219,7 @@ def gaussqn(a,b,n):
             z1=0.0
             while(abs(z-z1))>eps:
                 r1=1.0
-                r2=0.0
+w                r2=0.0
                 for j in range(n):
                     r3=r2
                     r2=r1
@@ -274,5 +274,6 @@ for i in range(13):
     print('%.1f' % float(genlik*180/pi),'%.6f' % t_yaklasik, '%.6f' % t_tam)
 # Gaussqn yöntemini kullansak dahi percision aynıdır, alt programlardan alıp kullanabilirsiniz
 '''
+# Nedir için gösteri vereceğiz
 
 
