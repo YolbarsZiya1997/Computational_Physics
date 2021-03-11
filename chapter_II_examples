@@ -6,6 +6,7 @@ Created on Thu Mar 11 16:53:39 2021
 @author: ziya
 """
 #Alıştırmalar(chapter II)
+#Soru 2.1
 '''
 #2.1 soru(a)
 from math import *
@@ -43,6 +44,7 @@ f1_geri = (f(x)-f(x-h))/h
 f1_tam = f1(x)
 print('%.10f' % f1_ileri, '%.10f' % f1_geri, '%.10f' % f1_tam)
 '''
+'''
 #2.1 soru(c)
 from math import *
 from numpy import *
@@ -59,4 +61,58 @@ f1_geri = (f(x)-f(x-h))/h
 f1_tam = f1(x)
 
 print('%.10f' % f1_ileri, '%.10f' % f1_geri, '%.10f' % f1_tam)
+'''
+#Soru 2.2
+'''
+# Soru 2.2 (a)
+from math import *
+from numpy import *
+
+def f(x):
+    return cos(pi*x)
+def f2(x):
+    return -1*(pi**2)*cos(pi*x)
+
+h=0.0001
+x=0.5
+f2_simetrik = (f(x+h)-2*f(x)+f(x-h))/h**2
+f2_ileri = ((f(x)-2*f(x+h)+f(x+2*h))/h**2)
+f2_tam = f2(x)
+
+print('%.10f' % f2_simetrik , '%.10f' % f2_ileri, '%.10f' % f2_tam)
+'''
+'''
+#Soru 2.2 (b)
+from math import *
+from numpy import *
+def f(x):
+    return 3*x*exp(x)-cos(x)
+def f2(x):
+    return cos(x)+(3*x+6)*exp(x)
+
+x=1.3
+h=0.001
+
+f2_simetrik = (f(x+h)-2*f(x)+f(x-h))/h**2
+f2_ileri = (f(x)-2*f(x+h)+f(x+2*h))/h**2
+f2_tam = f2(x)
+print('2.dereceden Simetrik Türev  '+'2.dereceden İleri_Geri Yöntem  '+'Tam Değer')
+print('%.10f' % f2_simetrik, '%.10f' % f2_ileri, '%.10f' % f2_tam)
+'''
+'''
+#Soru 2.2 (c)
+from math import *
+from numpy import *
+def f(x):
+    return x*exp(x)
+def f2(x):
+    return (x+2)*exp(x)
+
+h=0.0001
+x=2
+f2_simetrik = (f(x+h)-2*f(x)+f(x-h))/h**2
+f2_ileri = (f(x)-2*f(x+h)+f(x+2*h))/h**2
+f2_tam = f2(x)
+print('%.10f' % f2_simetrik, '%.10f' % f2_ileri, '%.10f' % f2_tam)
+'''
 
