@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 11 16:53:39 2021
+
+@author: ziya
+"""
+#Alıştırmalar(chapter II)
+'''
+#2.1 soru(a)
+from math import *
+from numpy import *
+def f(x):
+    return x*log(x)
+def f1(x):
+    return log(x)+1
+
+print('İleri Yöntem ','Geri Yöntem ','Tam değer ','Adım aralığı')
+h = 0.001
+for i in range(8):
+    x=float(i+1)
+    f1_ileri = (f(x+h)-f(x))/h
+    f1_geri = (f(x)-f(x-h))/h
+    f1_tam = f1(x)
+    print('%.10f' % f1_ileri, '%.10f' % f1_geri, '%.10f' % f1_tam, '%.10f' % h )
+    h=h/10.0
+'''
+'''
+#2.1 soru(b)
+from math import * 
+from numpy import *
+def f(x):
+    return x*cos(x)-x**2*sin(x)
+def f1(x):
+    return (1-x**2)*cos(x)-3*x*sin(x)
+
+print('İleri Yöntem '+'Geri Yöntem '+'Tam değer')
+
+h=0.001
+x=3
+f1_ileri = (f(x+h)-f(x))/h
+f1_geri = (f(x)-f(x-h))/h
+f1_tam = f1(x)
+print('%.10f' % f1_ileri, '%.10f' % f1_geri, '%.10f' % f1_tam)
+'''
+#2.1 soru(c)
+from math import *
+from numpy import *
+
+def f(x):
+    return x*exp(x)
+def f1(x):
+    return (x+1)*exp(x)
+
+h = 0.001
+x = 2
+f1_ileri = (f(x+h)-f(x))/h
+f1_geri = (f(x)-f(x-h))/h
+f1_tam = f1(x)
+
+print('%.10f' % f1_ileri, '%.10f' % f1_geri, '%.10f' % f1_tam)
+

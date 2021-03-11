@@ -5,7 +5,7 @@ Created on Mon Mar  1 12:08:14 2021
 
 @author: ziya
 """
-# The derivative example
+<h1>The derivative example</h1>
 '''
 # from math import *
 # def f(x):
@@ -274,6 +274,6 @@ for i in range(13):
     print('%.1f' % float(genlik*180/pi),'%.6f' % t_yaklasik, '%.6f' % t_tam)
 # Gaussqn yöntemini kullansak dahi percision aynıdır, alt programlardan alıp kullanabilirsiniz
 '''
-# Nedir için gösteri vereceğiz
+
 
 
