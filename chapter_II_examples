@@ -115,4 +115,53 @@ f2_ileri = (f(x)-2*f(x+h)+f(x+2*h))/h**2
 f2_tam = f2(x)
 print('%.10f' % f2_simetrik, '%.10f' % f2_ileri, '%.10f' % f2_tam)
 '''
+#Soru 2.3
+'''
+from math import *
+from numpy import *
+def f(x):
+    return log(x)
+def f2(x):
+    return -1/x**2
+x=1.0
+h=0.1
+for i in range(3):    
+    f2_simetrik = (f(x+h)-2*f(x)+f(x-h))/h**2
+    f2_ileri = (f(x)-2*f(x+h)+f(x+2*h))/h**2
+    f2_geri = (f(x)-2*f(x-h)+f(x-2*h))/h**2
+    f2_tam = f2(x)
+    sim_fark= f2_tam-f2_simetrik
+    ileri_fark=f2_tam-f2_ileri
+    geri_fark=f2_tam-f2_geri
+    print('%.5f' % h, '%.12f' % sim_fark,'%.12f' % ileri_fark,'%.12f' % geri_fark)
+    h=h/10.0
+'''
+#Didn't understood this one?
+'''
+from pylab import *
+from numpy import *
+from math import *
 
+def f(x,v,t):
+    return -c*abs(v)**2
+
+c=3*10**8
+n=20
+h=6.28*10/float(n)
+t=zeros(n,float)
+x=zeros(n,float)
+v=zeros(n,float)
+v[0]=1.0
+
+for i in range(1,n):
+    t[i]=h*i
+    x[i]=v[i-1]*h+x[i-1]
+    v[i]=f(x[i-1],v[i-1],t[i-1])*h+v[i-1]
+    
+plot(t,x,'k-')
+plot(t,v,'k--')
+xlabel('t')
+ylabel('velocity and displacement')
+show()
+'''
+ 
