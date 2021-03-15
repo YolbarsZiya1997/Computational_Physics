@@ -92,7 +92,7 @@ for i in range(12):
 '''
 #Bir boyutta hareket 
 '''
-from pylab import *
+sfrom pylab import *
 from numpy import *
 def f(x,v,t):
     return -x

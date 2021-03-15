@@ -164,4 +164,127 @@ xlabel('t')
 ylabel('velocity and displacement')
 show()
 '''
- 
+#Soru 2.5
+'''
+#example 2.5 (i)
+from math import * 
+from numpy import *
+
+def f(x):
+    return 3*x**3+5*x-1
+def trapez(a,b,n):
+    if n<1 or a>b:
+        print('hatalı veri')
+    else:
+        h=(b-a)/n
+        s=(f(a)+f(b))/2
+        for i in range(1,n):
+            x=a+i*h
+            s=s+f(x)
+        return h*s
+def simpson(a,b,n):
+    if n<1 or a>b:
+        print('hatalı veri')
+    elif n%2==1:
+        print('n çift değil')
+    else:
+        h=(b-a)/n
+        s=f(a)+f(b)
+        for i in range(1,n):
+            katsayi=2*(i%2+1) # because in the formula the coefficient is either 2 or 4, except the first and the last one
+            x=a+i*h
+            s=s+katsayi*f(x)
+    return h*s/3.0
+a=0.0
+b=1
+stam=9.0/4.0
+n=2
+print('N ', 'Simpson error ','Trapez error ')
+for i in range(8):
+    n=n*2
+    print(n,'%.10f' % (simpson(a, b, n)-stam),'%.10f' % (trapez(a, b, n)-stam))
+# for some reason this seems unreasonable:D, simpson literally gives no error 
+# which is ridiculous! But!!!! None the less, this is the correct programme
+# you can plug in e^x and try it out
+'''
+'''
+#Problem 2.5 (ii)
+from math import *
+from numpy import *
+def f(x):
+    return exp(-x)
+def trapez(a,b,n):
+    if n<1 or a>b:
+        print('Error! Wrong choosen range')
+    else:
+        h=(b-a)/n
+        s=(f(a)+f(b))/2
+        for i in range(1,n):
+            x=a+i*h
+            s=s+f(x)
+        return s*h
+def simpson(a,b,n):
+    if n<1 or a>b:
+        print('Error! Wrong range')
+    elif n%2==1:
+        print('N is not a even number')
+    else:
+        h=(b-a)/n
+        s=f(a)+f(b)
+        for i in range(1,n):
+            coefficient=2*(i%2+1)
+            x=a+i*h
+            s=s+coefficient*f(x)
+    return s*h/3.0
+a=0
+b=1
+stem=1-1/e
+n=2
+print('N ', 'Trapazoidal error','Simpson error')
+for i in range(3):
+    n=n*2
+    print(n,'%.10f' % (trapez(a, b, n)-stem),'%.10f' % (simpson(a, b, n)-stem) )
+'''
+'''
+# problem 2.5 (iii)
+from math import *
+from numpy import *
+def f(x):
+    return 1/x
+def trapez(a,b,n):
+    if n<1 or a>b:
+        print('Range Error')
+    else:
+        h=(b-a)/n
+        s=(f(a)+f(b))/2
+        for i in range(1,n):
+            x=a+i*h
+            s=s+f(x)
+        return s*h
+def simpson(a,b,n):
+    if n<1 or a>b:
+        print('Erronious range')
+    elif n%2==1:
+        print('n is not a even number')
+    else:
+        h=(b-a)/n
+        s=(f(a)+f(b))
+        for i in range(1,n):
+            coefficient=2*(i%2+1)
+            x=a+i*h
+            s=s+coefficient*f(x)
+        return s*h/3.0
+a=1
+b=10
+stem=log(10)
+n=4
+print('N',' Trapezoidal Error',' Simpson Error')
+for i in range(8):
+    print(n,'%.10f' % (trapez(a, b, n)-stem),'%.10f' % (simpson(a, b, n)-stem))
+    n=n*2
+'''            
+
+            
+    
+    
+            
