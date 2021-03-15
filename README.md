@@ -1,2 +1,2 @@
 py.test
-<h1>fizik problem </h1>
+<h1>Physics Problems </h1>
