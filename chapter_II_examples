@@ -421,7 +421,7 @@ thus we can eliminate the singularity there
 Ps: It is frustrating at times to figure out what to do with the singularity
 BUT! Trust in yourself and think out of the box!!!!
 '''
-'''
+
 from pylab import *
 from numpy import *
 def f(x):
@@ -430,10 +430,6 @@ def f(x):
     else:
         return (x**4*exp(x))/(exp(x)-1)**2
 def trapez(a,b,n):
-        h=(b-a)/n
-    #return x**2*exp(x)
-def trapez(a,b,n):
-    def trapez(a,b,n):
     if n<1 or a>b:
         print('Erronious Range')
     else:
@@ -443,7 +439,7 @@ def trapez(a,b,n):
             x=a+i*h
             s=s+f(x)
         return s*h
-heta=300 # debye tempreture K
+theta=300 # debye tempreture K
 n=100
 a=0.0
 T=0.5
@@ -460,4 +456,4 @@ plot(T,Cv,'k-')
 xlabel('Tempreture')
 ylabel('Cv')
 show()
-'''
+
